@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where the Tide Remembers — Project Spotlight</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a1628;
+    --ocean-deep: #0b3d6b;
+    --ocean-mid: #1a6b9a;
+    --teal: #0e7490;
+    --seafoam: #d6eaf8;
+    --gold: #c9963a;
+    --cream: #faf7f2;
+    --mist: #e8f4f8;
+    --text: #1e2d3d;
+    --subtle: #6b8299;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ───────────────────────────────────────────────────── */
+  .hero {
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    padding: 72px 60px 64px;
+    min-height: 340px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 110%, rgba(14,116,144,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 10% -10%, rgba(26,107,154,0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-wave {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    overflow: hidden;
+  }
+
+  .hero-wave svg { display: block; }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin-right: 10px;
+    opacity: 0.8;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    max-width: 680px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: rgba(214,234,248,0.85);
+  }
+
+  .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .meta-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ── LAYOUT ─────────────────────────────────────────────────── */
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  /* ── SECTION LABEL ──────────────────────────────────────────── */
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(201,150,58,0.4), transparent);
+  }
+
+  /* ── INTRO BLOCK ────────────────────────────────────────────── */
+  .intro-block {
+    margin-top: 52px;
+    background: var(--white);
+    border-radius: 3px;
+    padding: 40px 44px;
+    border-left: 3px solid var(--ocean-mid);
+    position: relative;
+  }
+
+  .intro-block p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  .intro-block strong { color: var(--ocean-deep); font-weight: 500; }
+
+  /* ── CARD ───────────────────────────────────────────────────── */
+  .card {
+    background: var(--white);
+    border-radius: 3px;
+    padding: 28px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--ocean-mid);
+  }
+
+  .card.gold::after { background: var(--gold); }
+  .card.teal::after { background: var(--teal); }
+  .card.deep::after { background: var(--ocean-deep); }
+
+  .card-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ocean-deep);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .card p {
+    font-size: 13.5px;
+    color: #4a6070;
+    line-height: 1.7;
+  }
+
+  .card ul {
+    list-style: none;
+    margin-top: 8px;
+  }
+
+  .card ul li {
+    font-size: 13px;
+    color: #4a6070;
+    line-height: 1.6;
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ocean-mid);
+    font-size: 10px;
+    top: 6px;
+  }
+
+  /* ── SCIENCE BLOCK ──────────────────────────────────────────── */
+  .science-block {
+    margin-top: 48px;
+    background: var(--ocean-deep);
+    border-radius: 3px;
+    padding: 44px 48px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .science-block::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .science-block::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: 60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .science-block .section-label { color: rgba(201,150,58,0.9); }
+  .science-block .section-label::after { background: linear-gradient(to right, rgba(201,150,58,0.3), transparent); }
+
+  .science-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 18px;
+    max-width: 540px;
+    line-height: 1.3;
+    position: relative;
+  }
+
+  .science-block > p {
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .science-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+
+  .pillar {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 20px 22px;
+  }
+
+  .pillar-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .pillar h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 7px;
+  }
+
+  .pillar p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.65;
+  }
+
+  /* ── OJAI BLOCK ─────────────────────────────────────────────── */
+  .ojai-block {
+    margin-top: 48px;
+    background: var(--mist);
+    border-radius: 3px;
+    padding: 44px 48px;
+    border: 1px solid rgba(14,116,144,0.15);
+    position: relative;
+  }
+
+  .ojai-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .ojai-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ocean-deep);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .ojai-block p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .ojai-block p:last-child { margin-bottom: 0; }
+
+  .ojai-features {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .feature-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: white;
+    border-radius: 3px;
+    padding: 16px 18px;
+    border-left: 2px solid var(--teal);
+  }
+
+  .feature-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .feature-row h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ocean-deep);
+    margin-bottom: 3px;
+  }
+
+  .feature-row p {
+    font-size: 12px;
+    color: var(--subtle);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── SILLIMAN BLOCK ─────────────────────────────────────────── */
+  .silliman-block {
+    margin-top: 48px;
+    background: linear-gradient(135deg, #faf7f0 0%, #f0f7f4 100%);
+    border-radius: 3px;
+    padding: 44px 48px;
+    border: 1px solid rgba(201,150,58,0.2);
+    position: relative;
+  }
+
+  .silliman-inner {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 52px;
+    align-items: start;
+  }
+
+  .silliman-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ocean-deep);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .silliman-block p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .silliman-block p strong { color: var(--ocean-deep); font-weight: 500; }
+
+  .collab-card {
+    background: white;
+    border-radius: 3px;
+    padding: 28px;
+    border-top: 3px solid var(--gold);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+
+  .collab-card .collab-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .collab-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--ocean-deep);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .collab-card .affil {
+    font-size: 12px;
+    color: var(--subtle);
+    margin-bottom: 18px;
+    font-style: italic;
+  }
+
+  .collab-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    font-size: 12.5px;
+    color: #4a6070;
+    line-height: 1.5;
+  }
+
+  .collab-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* ── DELIVERABLES ───────────────────────────────────────────── */
+  .deliverables {
+    margin-top: 48px;
+  }
+
+  .deliverables h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ocean-deep);
+    margin-bottom: 6px;
+  }
+
+  .deliverables > p {
+    font-size: 14px;
+    color: var(--subtle);
+    margin-bottom: 28px;
+  }
+
+  .deliverable-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .del-card {
+    background: var(--white);
+    border-radius: 3px;
+    padding: 24px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .del-card:nth-child(1) { border-color: var(--ocean-deep); }
+  .del-card:nth-child(2) { border-color: var(--ocean-mid); }
+  .del-card:nth-child(3) { border-color: var(--teal); }
+  .del-card:nth-child(4) { border-color: var(--gold); }
+  .del-card:nth-child(5) { border-color: #6b9aac; }
+  .del-card:nth-child(6) { border-color: #8ab3c0; }
+
+  .del-icon { font-size: 22px; margin-bottom: 10px; }
+
+  .del-card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ocean-deep);
+    margin-bottom: 5px;
+    line-height: 1.4;
+  }
+
+  .del-card p {
+    font-size: 12px;
+    color: var(--subtle);
+    line-height: 1.6;
+  }
+
+  /* ── CLOSING QUOTE ──────────────────────────────────────────── */
+  .closing-quote {
+    margin-top: 52px;
+    background: var(--ink);
+    border-radius: 3px;
+    padding: 52px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing-quote::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(14,116,144,0.18) 0%, transparent 70%);
+  }
+
+  .closing-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.65;
+    max-width: 680px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+
+  .closing-quote cite {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    position: relative;
+  }
+
+  /* ── LOCATIONS STRIP ────────────────────────────────────────── */
+  .locations-strip {
+    margin-top: 28px;
+    background: var(--white);
+    border-radius: 3px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .loc-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+
+  .loc-tag {
+    background: var(--seafoam);
+    color: var(--ocean-deep);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  .loc-tag.highlight {
+    background: var(--ocean-deep);
+    color: white;
+  }
+
+  /* ── DIVIDER ────────────────────────────────────────────────── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
+    margin: 0 -40px;
+  }
+
+  @media (max-width: 800px) {
+    .hero { padding: 48px 28px 52px; }
+    .page { padding: 0 20px 60px; }
+    .grid, .grid-3, .ojai-inner, .silliman-inner, .science-pillars, .deliverable-grid { grid-template-columns: 1fr; }
+    .closing-quote { padding: 40px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ───────────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-eyebrow">Project Spotlight · Ocean Justice Initiative</div>
+  <h1 class="hero-title">Where the Tide <em>Remembers</em></h1>
+  <p class="hero-subtitle">The Black Atlantic Ocean Archive &nbsp;·&nbsp; An Interdisciplinary Multimedia Research and Archival Initiative</p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Researcher</span>
+      <span class="meta-value">Cherryia White</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Affiliation</span>
+      <span class="meta-value">BIMS / Independent Researcher</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Timeline</span>
+      <span class="meta-value">June 2026 – July 2027</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Phase</span>
+      <span class="meta-value">Phase 1 · 6 Regions</span>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="100%" height="60">
+      <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#faf7f2"/>
+    </svg>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ── PURPOSE & CONTEXT ──────────────────────────────────────── -->
+  <div class="intro-block">
+    <div class="section-label">Purpose &amp; Context</div>
+    <p>Across the African diaspora — from the Gullah Geechee coast of South Carolina to the reef communities of Belize and the artisan fishing villages of Dakar — <strong>Black coastal communities hold generations of ecological knowledge that mainstream marine science has never documented, credited, or preserved.</strong> This knowledge is disappearing.</p>
+    <p><em>Where the Tide Remembers</em> is an interdisciplinary multimedia research and archival initiative that directly addresses this gap. It documents how Black coastal communities understand, interact with, and steward the ocean — capturing their lived science through oral history, documentary film, photography, and geospatial mapping. It then builds that knowledge into a permanent, publicly accessible digital archive powered by <strong>Ocean Justice AI (OJAI)</strong>.</p>
+    <p>This is not content creation. This is cross-continental archival research operating at the intersection of <strong>human dimensions of marine science</strong>, <strong>environmental justice</strong>, and <strong>community-based conservation</strong> — and it is producing scholarship, not just stories.</p>
+  </div>
+
+  <!-- ── LOCATIONS ─────────────────────────────────────────────── -->
+  <div class="locations-strip">
+    <span class="loc-label">Phase 1 Sites</span>
+    <span class="loc-tag">South Carolina, USA</span>
+    <span class="loc-tag">Ghana</span>
+    <span class="loc-tag">Senegal</span>
+    <span class="loc-tag">Zanzibar, Tanzania</span>
+    <span class="loc-tag highlight">Belize ★</span>
+    <span class="loc-tag">Bahia, Brazil</span>
+  </div>
+
+  <!-- ── WHY IT MATTERS ─────────────────────────────────────────── -->
+  <div style="margin-top:48px;">
+    <div class="section-label">Why This Research Matters</div>
+    <div class="grid">
+      <div class="card deep">
+        <span class="card-icon">🌊</span>
+        <h3>A Knowledge Crisis in Marine Science</h3>
+        <p>Traditional ecological knowledge held by Black coastal communities — about fish behavior, reef health, seasonal patterns, habitat loss — represents generations of direct observation. Yet this knowledge is systematically absent from conservation science databases, marine protected area plans, and restoration frameworks. When these communities' knowledge goes undocumented, marine science is operating with a critical blind spot.</p>
+      </div>
+      <div class="card teal">
+        <span class="card-icon">⚖️</span>
+        <h3>Environmental Justice Is a Scientific Problem</h3>
+        <p>Black coastal communities face disproportionate exposure to climate-driven habitat loss, industrial overfishing, and exclusion from conservation decision-making — yet are rarely centered in marine research. This project generates the documented evidence of those inequities while simultaneously demonstrating that these same communities are active conservation agents, not just subjects of environmental harm.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DELIVERABLE MEDIA ──────────────────────────────────────── -->
+  <div class="deliverables" style="margin-top:52px;">
+    <div class="section-label">Deliverable Media &amp; Methods</div>
+    <h2>What This Project Produces</h2>
+    <p>Each deliverable functions both as a standalone output and as a component of the living OJAI archive.</p>
+    <div class="deliverable-grid">
+      <div class="del-card">
+        <div class="del-icon">🎤</div>
+        <h4>Oral History Interviews</h4>
+        <p>5 voices per region (30 total) — fishers, elders, conservationists, and community leaders across 6 diaspora sites. Audio + video recorded, transcribed, and archived.</p>
+      </div>
+      <div class="del-card">
+        <div class="del-icon">🎬</div>
+        <h4>Short Documentary Films</h4>
+        <p>8–12 films, 3–5 minutes each, one per community. Community-centered, character-driven, designed for public and academic audiences.</p>
+      </div>
+      <div class="del-card">
+        <div class="del-icon">📸</div>
+        <h4>Curated Photo Essays</h4>
+        <p>3–5 photo essays — portraits, seascapes, and daily life. The emotional core of the archive; designed to make people feel the relationship between communities and the ocean.</p>
+      </div>
+      <div class="del-card">
+        <div class="del-icon">🗺️</div>
+        <h4>OJAI Digital Archive</h4>
+        <p>A live, map-based interactive platform embedding all stories, films, images, and environmental data geographically across the diaspora.</p>
+      </div>
+      <div class="del-card">
+        <div class="del-icon">🤝</div>
+        <h4>Community Engagement Events</h4>
+        <p>One event per site — story circles, ocean knowledge workshops, public screenings, and youth science engagement sessions. Co-created, not extracted.</p>
+      </div>
+      <div class="del-card">
+        <div class="del-icon">🖼️</div>
+        <h4>Public Exhibition</h4>
+        <p>One major exhibition drawing across all multimedia outputs — designed for cultural institutions, universities, and ocean science organizations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MARINE SCIENCE ─────────────────────────────────────────── -->
+  <div class="science-block">
+    <div class="section-label">Marine Science Components</div>
+    <h2>The Science at the Core of This Work</h2>
+    <p>Where the Tide Remembers is grounded in the emerging field of human dimensions of marine science — the study of how people understand, relate to, and shape ocean ecosystems. This project contributes rigorous, community-engaged primary research across three scientific domains:</p>
+
+    <div class="science-pillars">
+      <div class="pillar">
+        <div class="pillar-num">01 / Conservation Science</div>
+        <h4>Community-Led Conservation</h4>
+        <p>Documenting conservation practices developed by Black coastal communities — fishing rotations, reef stewardship, seasonal restrictions — that function as de facto marine protected area management. This validates community science as legitimate conservation data.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02 / Restoration Ecology</div>
+        <h4>Community-Based Restoration</h4>
+        <p>Capturing participation in and knowledge of local habitat restoration — including mangrove recovery, reef rehabilitation, and seagrass protection — across diaspora communities with generational relationships to these ecosystems. Connects local practice to global restoration science.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03 / Science Communication</div>
+        <h4>Community Science Events</h4>
+        <p>Ocean knowledge workshops and public screenings at each site serve as formal science communication events — translating ecological data and conservation challenges into accessible dialogue, building two-way exchange between researchers and communities.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OJAI ───────────────────────────────────────────────────── -->
+  <div class="ojai-block">
+    <div class="section-label">Platform Technology</div>
+    <div class="ojai-inner">
+      <div>
+        <h2>Ocean Justice AI (OJAI): A Research Platform, Not Just a Website</h2>
+        <p>OJAI is the technological spine of this project. It functions as an <strong>interactive, map-based digital archive</strong> that geographically embeds every oral history, film, photo essay, and environmental data point collected across the six research sites.</p>
+        <p>Where most research archives are static repositories, OJAI is designed as a <strong>living system</strong> — built to expand across phases and geographies, to integrate new environmental data, and to serve simultaneously as a research database, a public education tool, and an advocacy platform for ocean justice.</p>
+        <p>OJAI represents what AI-assisted archival work can look like when it centers communities of color: using technology not to replace human knowledge, but to <strong>make it visible, navigable, and permanent.</strong></p>
+      </div>
+      <div class="ojai-features">
+        <div class="feature-row">
+          <span class="feature-icon">📍</span>
+          <div>
+            <h4>Geospatial Story Mapping</h4>
+            <p>Every interview and film pinned to exact geographic coordinates across 6 regions — visualizing the transatlantic scope of diaspora ocean knowledge.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <span class="feature-icon">🔗</span>
+          <div>
+            <h4>Embedded Multimedia</h4>
+            <p>Video, audio, photography, and contextual research data integrated directly into each map node.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <span class="feature-icon">🌐</span>
+          <div>
+            <h4>Public Access</h4>
+            <p>Fully open platform — accessible to communities, researchers, educators, policymakers, and journalists globally.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <span class="feature-icon">📈</span>
+          <div>
+            <h4>Scalable Architecture</h4>
+            <p>Designed to expand beyond Phase 1 — adding new regions, research layers, and contributors as the project grows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SILLIMAN ───────────────────────────────────────────────── -->
+  <div class="silliman-block">
+    <div class="section-label">Collaboration Interest · Duke University</div>
+    <div class="silliman-inner">
+      <div>
+        <h2>A Natural Bridge to Dr. Brian Silliman's Work at Duke</h2>
+        <p>This project sits at a direct intersection with the research agenda of <strong>Dr. Brian Silliman</strong>, Rachel Carson Distinguished Professor of Marine Conservation Biology at Duke University's Nicholas School of the Environment, and lead investigator of Duke RESTORE.</p>
+
+        <p>Dr. Silliman's work centers on <strong>coastal ecosystem conservation and restoration</strong> — including coral reef systems, mangrove communities, seagrass beds, and the role of positive species interactions in recovery. His lab has active Caribbean field research, has received funding to assess blue carbon in Belize mangroves, and Duke RESTORE is currently conducting GIS mapping of coral restoration sites across the Caribbean. These are precisely the ecosystems and the geographies at the heart of <em>Where the Tide Remembers.</em></p>
+
+        <p>What Cherryia brings that lab-based restoration science does not: <strong>the human layer.</strong> The communities living adjacent to Belize's barrier reef and Caribbean mangrove systems hold decades of observational data about ecosystem change — data that no instrument has captured. An oral history and archival methodology, combined with geospatial mapping via OJAI, could directly complement the ecological field data Dr. Silliman's team generates.</p>
+
+        <p>The convergence is clear: <strong>conservation ecology + community knowledge systems + Caribbean ecosystems.</strong> A summer research collaboration, a joint Belize fieldwork component, or a PhD trajectory through Duke's Nicholas School would allow this work to evolve from archival research into peer-reviewed marine conservation science — grounded in both ecological rigor and human dimensions.</p>
+      </div>
+
+      <div class="collab-card">
+        <div class="collab-title">Potential Collaboration · Dr. Brian Silliman</div>
+        <h4>Brian Silliman, Ph.D.</h4>
+        <p class="affil">Rachel Carson Distinguished Professor<br>Marine Conservation Biology, Duke University<br>Nicholas School of the Environment</p>
+
+        <div class="collab-item"><div class="collab-dot"></div><span>Summer 2026 research collaboration</span></div>
+        <div class="collab-item"><div class="collab-dot"></div><span>Joint fieldwork in Belize or the Caribbean</span></div>
+        <div class="collab-item"><div class="collab-dot"></div><span>PhD candidacy, Nicholas School of the Environment</span></div>
+        <div class="collab-item"><div class="collab-dot"></div><span>Human dimensions component for Duke RESTORE Caribbean projects</span></div>
+        <div class="collab-item"><div class="collab-dot"></div><span>OJAI geospatial data integration with Duke reef mapping</span></div>
+
+        <div style="margin-top:18px; padding-top:14px; border-top:1px solid rgba(0,0,0,0.06);">
+          <div style="font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--subtle); margin-bottom:6px;">Shared Research Areas</div>
+          <div style="font-size:12px; color:var(--text); line-height:1.7;">Coral reef conservation · Belize mangrove systems · Caribbean coastal ecology · Community-based restoration · GIS mapping of marine habitats · Human dimensions of conservation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CLOSING QUOTE ──────────────────────────────────────────── -->
+  <div class="closing-quote">
+    <blockquote>"This project is designed as a living archive that preserves stories, knowledge, and relationships to the ocean for future generations — ensuring that the relationship between Black communities and the sea is not erased, but seen, valued, and carried forward."</blockquote>
+    <cite>Cherryia White · Where the Tide Remembers</cite>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
